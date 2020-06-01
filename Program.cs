@@ -1,4 +1,5 @@
 ﻿
+using Account;
 using Login;
 using Newtonsoft.Json;
 using Performance4;
@@ -61,9 +62,56 @@ namespace WSDLTest
 
             string json = JsonConvert.SerializeXmlNode(doc);
             ExecuteLogin();
-            Execute();
+          //  Execute();
 
-            ExecutePerformance();
+           // ExecutePerformance();
+
+
+            WsAPIAccountClient wsAPIAccountClient = new WsAPIAccountClient();
+
+           
+
+           
+
+
+            List<FIELDLISTFIELD> fIELDLISTFIELD = new List<FIELDLISTFIELD>();
+
+            FIELDLISTFIELD[] fIELDLISTFIELDs = new FIELDLISTFIELD[3];
+
+            FIELDLISTFIELD fIELDLISTFIELD1 = new FIELDLISTFIELD();
+            fIELDLISTFIELD1.OBJTYPE = 1;
+            fIELDLISTFIELD1.VALUE = "ironman";//firstname
+
+            FIELDLISTFIELD fIELDLISTFIELD2 = new FIELDLISTFIELD();
+            fIELDLISTFIELD2.OBJTYPE = 548;
+            fIELDLISTFIELD2.VALUE = "tony1234";//firstname
+
+
+            FIELDLISTFIELD fIELDLISTFIELD3 = new FIELDLISTFIELD();
+            fIELDLISTFIELD3.OBJTYPE = 549;
+            fIELDLISTFIELD3.VALUE = "avengers";//firstname
+
+
+
+            fIELDLISTFIELDs[0] = fIELDLISTFIELD1;
+            fIELDLISTFIELDs[1] = fIELDLISTFIELD2;
+            fIELDLISTFIELDs[2] = fIELDLISTFIELD3;
+
+            SAVEACCOUNTREQ sAVEACCOUNTREQ = new SAVEACCOUNTREQ { 
+            FIELDLIST = fIELDLISTFIELDs,
+            DMGCATEGORYAK = "VTA.DMGCAT29"
+            
+            };
+            SaveAccountRequest saveAccountRequest = new SaveAccountRequest(sAVEACCOUNTREQ);
+
+
+            SaveAccountResponse saveAccountResponse = wsAPIAccountClient.SaveAccount(saveAccountRequest);
+
+
+
+
+
+
 
             WsAPIPerformanceClient wsAPIPerformanceClient = new WsAPIPerformanceClient();
 
