@@ -105,8 +105,17 @@ namespace WSDLTest
             SaveAccountRequest saveAccountRequest = new SaveAccountRequest(sAVEACCOUNTREQ);
 
 
-            SaveAccountResponse saveAccountResponse = wsAPIAccountClient.SaveAccount(saveAccountRequest);
+          //  SaveAccountResponse saveAccountResponse = wsAPIAccountClient.SaveAccount(saveAccountRequest);
 
+
+            B2BAccountLogInRequest b2BAccountLogInRequest = new B2BAccountLogInRequest
+            {
+                ADmgCatCode = "Guests",
+                AUsername = "batman",
+                APsw = "Iambatma"
+            };
+
+            B2BAccountLogInResponse b2BAccountLogInResponse = wsAPIAccountClient.B2BAccountLogIn(b2BAccountLogInRequest);
 
 
 
