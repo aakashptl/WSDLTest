@@ -2,6 +2,7 @@
 using Account;
 using Login;
 using Newtonsoft.Json;
+using Order;
 using Performance4;
 using System;
 using System.Collections.Generic;
@@ -119,6 +120,87 @@ namespace WSDLTest
 
 
 
+            WsAPIOrderClient wsAPIOrderClient = new WsAPIOrderClient();
+
+
+            CHECKOUTREQ cHECKOUTREQ = new CHECKOUTREQ();
+            
+
+            ITEMLISTITEM[] iTEMLISTITEMs = new ITEMLISTITEM[1];
+
+
+            
+
+            //ITEMBASE iTEMBASE = new ITEMBASE { 
+            //AK = "VTA.EVN1.MCC28",
+            //QTY ="1"
+            //};
+
+
+
+            //Order.PERFORMANCEBASE pERFORMANCEBASE= new Order.PERFORMANCEBASE { 
+            //AK = "VTA.EVN4.PRF100"
+            //};
+
+           // PRODUCTBASELISTPRODUCT
+
+            //ITEMITEMPERFORMANCE[] iTEMITEMPERFORMANCE = new ITEMITEMPERFORMANCE[1];
+
+            //iTEMITEMPERFORMANCE[1].AK = "VTA.EVN4.PRF100";
+
+            ITEMLISTITEMPERFORMANCE[] iTEMLISTITEMPERFORMANCEs = new ITEMLISTITEMPERFORMANCE[1];
+
+            iTEMLISTITEMPERFORMANCEs[1].AK = "VTA.EVN4.PRF100";
+
+             iTEMLISTITEMs[1].AK = "VTA.EVN1.MCC28";
+            iTEMLISTITEMs[1].QTY = "1";
+            iTEMLISTITEMs[1].PERFORMANCELIST = iTEMLISTITEMPERFORMANCEs;
+
+            //PERFORMANCE[] pERFORMANCEs = new PERFORMANCE[1];
+
+            //pERFORMANCEs[1].AK = "VTA.EVN4.PRF100";
+
+
+
+            //ITEM iTEM = new ITEM
+            //{
+            //   ITEMPERFORMANCELIST = iTEMITEMPERFORMANCE,
+               
+
+            //};
+
+            
+
+            Order.ACCOUNTSAVEBASE aCCOUNTSAVEBASE = new Order.ACCOUNTSAVEBASE
+            {
+            AK = "99901920000019"
+            };
+
+            ORDERSTATUS oRDERSTATUS = new ORDERSTATUS
+            {
+                APPROVED=true,
+                PAID = true,
+                 ENCODED = true,
+                 VALIDATED = true,
+                 COMPLETED= true
+            };
+
+
+            RESERVATIONBASE rESERVATIONBASE = new RESERVATIONBASE
+            {
+
+                RESERVATIONOWNER = aCCOUNTSAVEBASE
+            };
+
+            cHECKOUTREQ.SHOPCART = new SHOPCART
+            {
+                ITEMLIST = iTEMLISTITEMs,
+                RESERVATION = rESERVATIONBASE,
+                FLAG = oRDERSTATUS
+            };
+
+
+            CheckOutRequest checkOutRequest = new CheckOutRequest();
 
 
 
